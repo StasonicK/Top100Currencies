@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/image_currency_icon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/bitcoin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_currency_sym"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/text_currency_sym"
+        app:layout_constraintStart_toEndOf="@+id/image_currency_icon"
+        app:layout_constraintTop_toTopOf="@+id/image_currency_icon"
+        tools:text="BAT" />
+
+    <TextView
+        android:id="@+id/text_currency_name"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintStart_toStartOf="@+id/text_currency_sym"
+        app:layout_constraintTop_toBottomOf="@id/text_currency_sym"
+        tools:text="Basic Attention Token" />
+
+    <TextView
+        android:id="@+id/text_currency_market_cap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/text_currency_sym"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/text_currency_sym"
+        tools:text="$ 278839000" />
+
+    <TextView
+        android:id="@+id/text_currency_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/text_currency_name"
+        tools:text="14.4545" />
+
+    <TextView
+        android:id="@+id/text_market_cap_rank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Market Cap "
+        app:layout_constraintBottom_toBottomOf="@+id/text_currency_market_cap"
+        app:layout_constraintEnd_toStartOf="@+id/text_currency_market_cap"
+        app:layout_constraintTop_toTopOf="@+id/text_currency_market_cap"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/text_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Price $ "
+        app:layout_constraintBottom_toBottomOf="@+id/text_currency_price"
+        app:layout_constraintEnd_toStartOf="@+id/text_currency_price"
+        app:layout_constraintTop_toTopOf="@+id/text_currency_price"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
