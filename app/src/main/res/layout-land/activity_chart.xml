@@ -5,48 +5,50 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/image_currency_detail_icon"
+        android:layout_width="124dp"
+        android:layout_height="124dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/chart_currency"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/progress_chart"
+        app:layout_constraintVertical_bias="0.0"
+        tools:src="@drawable/bitcoin" />
+
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/chart_currency"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_total_supply" />
+        app:layout_constraintStart_toEndOf="@+id/text_market_cap_change"
+        app:layout_constraintTop_toTopOf="@+id/progress_chart" />
 
     <ProgressBar
         android:id="@+id/progress_chart"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:padding="100dp"
-        app:layout_constraintBottom_toBottomOf="@+id/chart_currency"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_total_supply"
-        tools:background="@android:color/transparent" />
-
-    <ImageView
-        android:id="@+id/image_currency_detail_icon"
-        android:layout_width="72dp"
-        android:layout_height="72dp"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/bitcoin" />
+        android:padding="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text_market_cap_change"
+        tools:background="@android:color/transparent" />
 
     <TextView
         android:id="@+id/text_market_cap_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:text="@string/market_cap_rank_text"
-        app:layout_constraintStart_toEndOf="@+id/image_currency_detail_icon"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_currency_detail_icon" />
 
     <TextView
         android:id="@+id/text_market_cap_change_text"
@@ -67,7 +69,7 @@
         app:layout_constraintTop_toBottomOf="@+id/text_market_cap_change_text" />
 
     <TextView
-        android:id="@+id/text_ath_change_percentage"
+        android:id="@+id/text_ath_change_percentage_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
@@ -82,7 +84,7 @@
         android:layout_marginTop="2dp"
         android:text="@string/circulating_supply_text"
         app:layout_constraintStart_toStartOf="@+id/text_market_cap_text"
-        app:layout_constraintTop_toBottomOf="@+id/text_ath_change_percentage" />
+        app:layout_constraintTop_toBottomOf="@+id/text_ath_change_percentage_text" />
 
     <TextView
         android:id="@+id/text_total_supply_text"
@@ -97,55 +99,55 @@
         android:id="@+id/text_detail_market_cap_rank"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:text=""
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/text_market_cap_text"
+        app:layout_constraintTop_toBottomOf="@+id/image_currency_detail_icon" />
 
     <TextView
         android:id="@+id/text_market_cap_change"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="2dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text_market_cap_change_text"
         app:layout_constraintTop_toBottomOf="@+id/text_detail_market_cap_rank" />
 
     <TextView
         android:id="@+id/text_ATH"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="2dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text_ath"
         app:layout_constraintTop_toBottomOf="@+id/text_market_cap_change" />
 
     <TextView
         android:id="@+id/text_ath_change"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="2dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text_ath_change_percentage_text"
         app:layout_constraintTop_toBottomOf="@+id/text_ATH" />
 
     <TextView
         android:id="@+id/text_circulating_supply"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="2dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text_circulating_supply_text"
         app:layout_constraintTop_toBottomOf="@+id/text_ath_change" />
 
     <TextView
         android:id="@+id/text_total_supply"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="2dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text_total_supply_text"
         app:layout_constraintTop_toBottomOf="@+id/text_circulating_supply" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

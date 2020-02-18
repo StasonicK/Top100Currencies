@@ -1,4 +1,4 @@
-package com.eburg_soft.top100currencies.model.network.responce
+package com.eburg_soft.top100currencies.network
 
 data class GeckoCoin(
     val id: String,
@@ -16,6 +16,7 @@ data class GeckoCoin(
     val ath: Float,
     val ath_change_percentage: Float
 )
+
 data class GeckoCoinChart (
     var prices: List<List<Float>>
 )

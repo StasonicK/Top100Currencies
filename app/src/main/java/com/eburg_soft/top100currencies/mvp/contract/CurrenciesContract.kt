@@ -1,6 +1,5 @@
 package com.eburg_soft.top100currencies.mvp.contract
 
-import com.eburg_soft.top100currencies.mvp.BaseContract
 import com.eburg_soft.top100currencies.ui.adapter.CurrenciesAdapter
 
 class CurrenciesContract {
@@ -13,7 +12,7 @@ class CurrenciesContract {
         fun refresh()
     }
 
-    abstract class Presenter : BaseContract.Presenter<View>() {
+    abstract class Presenter: BaseContract.Presenter<View>() {
         abstract fun makeList()
         abstract fun refreshList()
     }

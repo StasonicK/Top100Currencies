@@ -62,7 +62,7 @@ dependencies {
 
     //dagger
     implementation "com.google.dagger:dagger:" + rootProject.dagger2Version
-    kapt "com.google.dagger:dagger-compiler:"+ rootProject.dagger2Version
+    kapt "com.google.dagger:dagger-compiler:" + rootProject.dagger2Version
 
     //rx
     implementation 'io.reactivex.rxjava2:rxkotlin:2.1.0'

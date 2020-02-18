@@ -1,33 +1,35 @@
-package com.eburg_soft.top100currencies
+package com.eburg_soft.top100currencies.ui.activities
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import com.eburg_soft.top100currencies.ui.activities.AboutActivity
-import com.eburg_soft.top100currencies.ui.fragments.CurrenciesListFragment
+import com.eburg_soft.top100currencies.R
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.InterstitialAd
+import com.eburg_soft.top100currencies.ui.fragments.CurrenciesListFragment
 
 class MainActivity : AppCompatActivity() {
+
     private lateinit var mInterstitialAd: InterstitialAd
 
-    private val pageBannerAds = "ca-app-pub-8721640890137447/7185287810"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         mInterstitialAd = InterstitialAd(this)
-        mInterstitialAd.adUnitId = pageBannerAds
+        mInterstitialAd.adUnitId = "ca-app-pub-3940256099942544/1033173712"
         mInterstitialAd.loadAd(AdRequest.Builder().build())
 
         if (savedInstanceState == null) {
             supportFragmentManager
                 .beginTransaction()
                 .add(R.id.container, CurrenciesListFragment(), null)
+                .commit()
         }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -35,25 +37,27 @@ class MainActivity : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item!!.itemId) {
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+
+        when(item!!.itemId) {
             R.id.action_about -> {
-                val intent = Intent(this, AboutActivity::class.java)
-                startActivity(intent)
+                startActivity(Intent(this, AboutActivity::class.java))
                 return true
             }
         }
-        return super.onOptionsItemSelected(item)
-    }
 
-    private fun showAd() {
-        if (mInterstitialAd.isLoaded) {
-            mInterstitialAd.show()
-        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onBackPressed() {
         super.onBackPressed()
         showAd()
+    }
+
+
+    private fun showAd() {
+        if (mInterstitialAd.isLoaded) {
+            mInterstitialAd.show()
+        }
     }
 }

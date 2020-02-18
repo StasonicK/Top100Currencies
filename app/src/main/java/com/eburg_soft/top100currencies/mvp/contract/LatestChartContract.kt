@@ -1,6 +1,6 @@
-package com.eburg_soft.top100currencies.mvp.contract
+package com.eburg_soft.topcrypts.mvp.contract
 
-import com.eburg_soft.top100currencies.mvp.BaseContract
+import com.eburg_soft.top100currencies.mvp.contract.BaseContract
 
 class LatestChartContract {
     interface View : BaseContract.View {
@@ -12,7 +12,7 @@ class LatestChartContract {
         fun refresh()
     }
 
-    abstract class Presenter : BaseContract.Presenter<View>() {
+    abstract class Presenter: BaseContract.Presenter<View>() {
         abstract fun makeChart(id: String)
         abstract fun refreshChart()
     }

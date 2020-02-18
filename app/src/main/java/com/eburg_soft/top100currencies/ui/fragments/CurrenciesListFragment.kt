@@ -1,24 +1,22 @@
 package com.eburg_soft.top100currencies.ui.fragments
 
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import com.eburg_soft.top100currencies.R
-import com.eburg_soft.top100currencies.common.App
 import com.eburg_soft.top100currencies.mvp.contract.CurrenciesContract
 import com.eburg_soft.top100currencies.mvp.presenter.CurrenciesPresenter
+
 import com.eburg_soft.top100currencies.ui.adapter.BaseAdapter
 import com.eburg_soft.top100currencies.ui.adapter.CurrenciesAdapter
-import com.eburg_soft.top100currencies.ui.adapter.CurrenciesAdapter.Currency
+import com.eburg_soft.top100currencies.common.App
 import kotlinx.android.synthetic.main.activity_main.progress_bar
 import javax.inject.Inject
 
-/**
- * A simple [Fragment] subclass.
- */
+
 class CurrenciesListFragment : BaseListFragment(), CurrenciesContract.View {
 
     @Inject
@@ -43,7 +41,7 @@ class CurrenciesListFragment : BaseListFragment(), CurrenciesContract.View {
         return CurrenciesAdapter()
     }
 
-    override fun addCurrency(currency: Currency) {
+    override fun addCurrency(currency: CurrenciesAdapter.Currency) {
         viewAdapter.add(currency)
     }
 
@@ -68,7 +66,7 @@ class CurrenciesListFragment : BaseListFragment(), CurrenciesContract.View {
         viewAdapter.notifyDataSetChanged()
     }
 
-    override fun onResume() {
+	override fun onResume() {
         super.onResume()
         presenter.attach(this)
     }
@@ -77,4 +75,7 @@ class CurrenciesListFragment : BaseListFragment(), CurrenciesContract.View {
         super.onPause()
         presenter.detach()
     }
+
+
+
 }

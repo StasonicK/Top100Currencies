@@ -1,6 +1,6 @@
-package com.eburg_soft.top100currencies.di.modules
+package com.eburg_soft.top100currencies.di.module
 
-import com.eburg_soft.top100currencies.model.network.CoinGeckoApi
+import com.eburg_soft.top100currencies.network.CoinGeckoApi
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -17,12 +17,6 @@ import javax.inject.Singleton
 @Module
 class RestModule {
 
-    private val BASE_URL = "https://api.coingecko.com/api/v3/"
-
-    private val MAX_READ_TIMEOUT: Long = 3000
-
-    private val MAX_CONNECT_TIMEOUT: Long = 6000
-
     @Provides
     @Singleton
     fun provideGson(): Gson =
@@ -38,16 +32,18 @@ class RestModule {
             .connectTimeout(60, TimeUnit.SECONDS)
             .build()
 
+
     @Provides
     @Singleton
     @Named("COINGECKO_API")
     fun provideGeckoRetrofit(gson: Gson, okHttpClient: OkHttpClient): Retrofit =
         Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl("https://api.coingecko.com/api/v3/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(okHttpClient)
             .build()
+
 
     @Provides
     @Singleton

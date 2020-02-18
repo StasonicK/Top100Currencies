@@ -6,16 +6,16 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.eburg_soft.top100currencies.ui.adapter.BaseAdapter
-import kotlinx.android.synthetic.main.fragment_currencies_list.list
+import kotlinx.android.synthetic.main.fragment_currencies_list.*
 
 abstract class BaseListFragment : Fragment() {
+
     private lateinit var recyclerView: RecyclerView
     protected lateinit var viewAdapter: BaseAdapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         viewManager = LinearLayoutManager(context)
         viewAdapter = createAdapterInstance()
 

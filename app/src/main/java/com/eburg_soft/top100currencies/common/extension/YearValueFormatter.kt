@@ -1,11 +1,14 @@
-package com.eburg_soft.top100currencies.formatter
+package com.eburg_soft.top100currencies.common.extension
 
-import com.eburg_soft.top100currencies.dateToString
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.formatter.IAxisValueFormatter
-import java.util.Calendar
+import info.eburg_soft.top100currencies.dateToString
+import java.util.*
 
-class YearValueFormatter:IAxisValueFormatter{
+class YearValueFormatter : IAxisValueFormatter {
+
+
+
     override fun getFormattedValue(value: Float, axis: AxisBase?): String {
         val calendar = Calendar.getInstance()
         calendar.timeInMillis = value.toLong()

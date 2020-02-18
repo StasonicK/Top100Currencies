@@ -1,10 +1,11 @@
 package com.eburg_soft.top100currencies.mvp.presenter
 
-import com.eburg_soft.top100currencies.common.App
-import com.eburg_soft.top100currencies.formatThousands
-import com.eburg_soft.top100currencies.model.network.CoinGeckoApi
-import com.eburg_soft.top100currencies.mvp.contract.CurrenciesContract
+
 import com.eburg_soft.top100currencies.ui.adapter.CurrenciesAdapter
+import com.eburg_soft.top100currencies.common.App
+import com.eburg_soft.top100currencies.mvp.contract.CurrenciesContract
+import com.eburg_soft.top100currencies.network.CoinGeckoApi
+import info.eburg_soft.top100currencies.formatThousands
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -12,21 +13,33 @@ import javax.inject.Inject
 
 class CurrenciesPresenter : CurrenciesContract.Presenter() {
 
+    //внедряем источник данных
     @Inject
     lateinit var geckoApi: CoinGeckoApi
 
-    //initializing of the Dagger component
+    //инициализируем компоненты Даггера
     init {
         App.appComponent.inject(this)
+
     }
 
+    //создаем список, загружая данные с помощью RxJava
     override fun makeList() {
         view.showProgress()
 
+        //подписываемся на поток данных
         subscribe(geckoApi.getCoinMarket()
+
+            //определяем отдельный поток для отправки данных
             .subscribeOn(Schedulers.io())
+
+            //получаем данные в основном потоке
             .observeOn(AndroidSchedulers.mainThread())
+
+            //преобразуем List<GeckoCoin> в Observable<GeckoCoin>
             .flatMap { Observable.fromIterable(it) }
+
+            //наполняем поля элемента списка для адаптера
             .doOnNext {
                 view.addCurrency(
                     CurrenciesAdapter.Currency(
@@ -47,9 +60,13 @@ class CurrenciesPresenter : CurrenciesContract.Presenter() {
                     )
                 )
             }
+
+            //вызывается при вызове onComplete
             .doOnComplete {
                 view.hideProgress()
             }
+
+            //подписывает Observer на Observable
             .subscribe({
                 view.hideProgress()
                 view.notifyAdapter()
@@ -61,6 +78,8 @@ class CurrenciesPresenter : CurrenciesContract.Presenter() {
         )
     }
 
+
+    //обновляем список
     override fun refreshList() {
         view.refresh()
         makeList()

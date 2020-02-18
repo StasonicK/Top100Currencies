@@ -3,32 +3,39 @@ package com.eburg_soft.top100currencies.ui.adapter
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
+//абстрактный базовый класс адаптера
 abstract class BaseAdapter<VH : BaseAdapter.BaseViewHolder> : RecyclerView.Adapter<VH>() {
-    //a list of elements
+
+    //список элементов списка
     var items : ArrayList<Any> = ArrayList()
-    //return size of the list
+
+    //возвращающает размер списка
     override fun getItemCount(): Int {
         return items.size
     }
-    //binds views with content
+
+    //связывает views с содержимым
     override fun onBindViewHolder(holder: VH, position: Int) {
         holder.bind(getItem(position))
     }
-    //return an element position in the list
+
+    //возвращает позицию элемента в списке
     fun getItem(position: Int): Any {
         return items[position]
     }
-    //add one element
+
+    //функция добавления одного элемента
     fun add(newItem: Any) {
         items.add(newItem)
     }
-    //add all elements
+
+    //функция добавления всех элементов
     fun add(newItems: List<Any>) {
         items.addAll(newItems)
     }
-    //abstract class ViewHolder
-    abstract class BaseViewHolder(protected val view: View) : RecyclerView.ViewHolder(view)
-    {
+
+    //абстрактный класс ViewHolder
+    abstract class BaseViewHolder(protected val view: View) : RecyclerView.ViewHolder(view) {
         abstract fun bind(item: Any)
     }
 }
