@@ -1,9 +1,9 @@
-package com.eburg_soft.top100currencies
+package info.eburg_soft.top100currencies
+
+
 
 import java.text.SimpleDateFormat
-import java.util.Calendar
-import java.util.Formatter
-import java.util.Locale
+import java.util.*
 
 fun Float.formatThousands() : String {
     val sb = StringBuilder()
@@ -12,8 +12,14 @@ fun Float.formatThousands() : String {
     return sb.toString()
 }
 
+
+
 fun Number.dateToString(pattern: String): String {
     val calendar = Calendar.getInstance()
     calendar.timeInMillis = this.toLong()
     return SimpleDateFormat(pattern).format(calendar.time)
 }
+
+
+
+
