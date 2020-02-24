@@ -13,7 +13,6 @@ class LatestChartPresenter : LatestChartContract.Presenter() {
     @Inject
     lateinit var geckoApi: CoinGeckoApi
 
-
     init {
         App.appComponent.inject(this)
     }
@@ -21,17 +20,12 @@ class LatestChartPresenter : LatestChartContract.Presenter() {
     override fun makeChart(id: String) {
 
         subscribe(geckoApi.getCoinMarketChart(id)
-
-
+            .subscribeOn(Schedulers.io())
             .map { it.prices }
-
             .flatMap { Observable.fromIterable(it) }
-
             .doOnComplete {
-
                 view.hideProgress()
             }
-            .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 view.hideProgress()
@@ -43,14 +37,9 @@ class LatestChartPresenter : LatestChartContract.Presenter() {
                 it.printStackTrace()
             })
         )
-
     }
 
     override fun refreshChart() {
         view.refresh()
-
     }
-
-
-
 }

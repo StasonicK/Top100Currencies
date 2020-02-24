@@ -1,4 +1,4 @@
-package com.eburg_soft.top100currencies.chart
+package com.eburg_soft.top100currencies.data.chart
 
 import android.content.Context
 import android.graphics.Color

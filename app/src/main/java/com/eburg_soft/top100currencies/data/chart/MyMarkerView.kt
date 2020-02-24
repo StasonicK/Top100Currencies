@@ -1,4 +1,4 @@
-package com.eburg_soft.top100currencies.chart
+package com.eburg_soft.top100currencies.data.chart
 
 import android.annotation.SuppressLint
 import android.content.Context

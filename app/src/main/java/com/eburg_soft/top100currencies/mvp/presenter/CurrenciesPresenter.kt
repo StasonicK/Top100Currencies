@@ -33,11 +33,11 @@ class CurrenciesPresenter : CurrenciesContract.Presenter() {
             //определяем отдельный поток для отправки данных
             .subscribeOn(Schedulers.io())
 
-            //получаем данные в основном потоке
-            .observeOn(AndroidSchedulers.mainThread())
-
             //преобразуем List<GeckoCoin> в Observable<GeckoCoin>
             .flatMap { Observable.fromIterable(it) }
+
+            //получаем данные в основном потоке
+            .observeOn(AndroidSchedulers.mainThread())
 
             //наполняем поля элемента списка для адаптера
             .doOnNext {
@@ -77,7 +77,6 @@ class CurrenciesPresenter : CurrenciesContract.Presenter() {
             })
         )
     }
-
 
     //обновляем список
     override fun refreshList() {

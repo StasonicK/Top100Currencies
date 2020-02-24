@@ -1,5 +1,6 @@
-package com.eburg_soft.top100currencies.ui.activities
+package com.eburg_soft.top100currencies.ui.activity
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
@@ -8,12 +9,11 @@ import androidx.appcompat.app.AppCompatActivity
 import com.eburg_soft.top100currencies.R
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.InterstitialAd
-import com.eburg_soft.top100currencies.ui.fragments.CurrenciesListFragment
+import com.eburg_soft.top100currencies.ui.fragment.CurrenciesListFragment
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var mInterstitialAd: InterstitialAd
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -5,9 +5,10 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
+/**
+ *CoinGeckoApi is API containing calls for coin data for RecyclerView and Chart
+ */
 interface CoinGeckoApi {
-
-
 
     @GET("coins/markets")
     fun getCoinMarket(
@@ -16,8 +17,6 @@ interface CoinGeckoApi {
         @Query("sparkline") sparkline: Boolean = false,
         @Query("order") order: String = "market_cap_desc"
     ): Observable<List<GeckoCoin>>
-
-
 
     @GET("coins/{id}/market_chart")
     fun getCoinMarketChart(

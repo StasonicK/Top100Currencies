@@ -7,8 +7,6 @@ import java.util.*
 
 class YearValueFormatter : IAxisValueFormatter {
 
-
-
     override fun getFormattedValue(value: Float, axis: AxisBase?): String {
         val calendar = Calendar.getInstance()
         calendar.timeInMillis = value.toLong()
@@ -19,4 +17,5 @@ class YearValueFormatter : IAxisValueFormatter {
         val date = this.timeInMillis
         return date.dateToString("MMM yyyy")
     }
+
 }

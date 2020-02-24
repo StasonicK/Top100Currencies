@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.eburg_soft.top100currencies.ui.activities.MainActivity">
+    tools:context="com.eburg_soft.top100currencies.ui.activity.MainActivity">
 
     <FrameLayout
         android:id="@+id/container"

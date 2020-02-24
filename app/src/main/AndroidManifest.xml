@@ -12,8 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.eburg_soft.top100currencies.ui.activities.AboutActivity"></activity>
-        <activity android:name="com.eburg_soft.top100currencies.ui.activities.MainActivity">
+        <activity android:name="com.eburg_soft.top100currencies.ui.activity.AboutActivity"></activity>
+        <activity android:name="com.eburg_soft.top100currencies.ui.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,8 +21,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.activities.ChartActivity"
-            android:parentActivityName=".ui.activities.MainActivity">
+            android:name=".ui.activity.ChartActivity"
+            android:parentActivityName=".ui.activity.MainActivity">
         </activity>
 
         <meta-data

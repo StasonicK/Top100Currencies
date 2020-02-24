@@ -1,26 +1,29 @@
-package com.eburg_soft.top100currencies.ui.fragments
-
+package com.eburg_soft.top100currencies.ui.fragment
 
 import android.os.Bundle
+import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.eburg_soft.top100currencies.R
+import com.eburg_soft.top100currencies.common.App
 import com.eburg_soft.top100currencies.mvp.contract.CurrenciesContract
 import com.eburg_soft.top100currencies.mvp.presenter.CurrenciesPresenter
-
 import com.eburg_soft.top100currencies.ui.adapter.BaseAdapter
 import com.eburg_soft.top100currencies.ui.adapter.CurrenciesAdapter
-import com.eburg_soft.top100currencies.common.App
 import kotlinx.android.synthetic.main.activity_main.progress_bar
+import java.util.ArrayList
 import javax.inject.Inject
 
-
 class CurrenciesListFragment : BaseListFragment(), CurrenciesContract.View {
+    private val BUNDLE_ALBUM_LIST = "currencyList"
+    private val BUNDLE_RECYCLER_VIEW_POSITION = "recyclerPosition"
 
     @Inject
     lateinit var presenter: CurrenciesPresenter
+
+    private var currencyList: ArrayList<CurrenciesAdapter.Currency>? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +38,26 @@ class CurrenciesListFragment : BaseListFragment(), CurrenciesContract.View {
         App.appComponent.inject(this)
         presenter.attach(this)
         presenter.makeList()
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        retainInstance = true
+
+        if (savedInstanceState != null) {
+            currencyList = savedInstanceState.getParcelableArrayList(BUNDLE_ALBUM_LIST)
+            //todo pull "currencyList" into listAdapter after shifting from RecyclerView.Adapter to ListAdapter
+            val listState: Parcelable = savedInstanceState.getParcelable(BUNDLE_RECYCLER_VIEW_POSITION)!!
+            recyclerView.layoutManager?.onRestoreInstanceState(listState)
+        } else if (arguments != null) {
+            currencyList = arguments!!.getParcelableArrayList(BUNDLE_ALBUM_LIST)
+            //todo pull "currencyList" into listAdapter after shifting from RecyclerView.Adapter to ListAdapter
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putParcelableArrayList(BUNDLE_ALBUM_LIST, currencyList)
     }
 
     override fun createAdapterInstance(): BaseAdapter<*> {
@@ -66,7 +89,7 @@ class CurrenciesListFragment : BaseListFragment(), CurrenciesContract.View {
         viewAdapter.notifyDataSetChanged()
     }
 
-	override fun onResume() {
+    override fun onResume() {
         super.onResume()
         presenter.attach(this)
     }
@@ -75,7 +98,4 @@ class CurrenciesListFragment : BaseListFragment(), CurrenciesContract.View {
         super.onPause()
         presenter.detach()
     }
-
-
-
 }

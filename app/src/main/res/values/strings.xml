@@ -9,4 +9,9 @@
     <string name="ath_change_text">ATH change, %</string>
     <string name="circulating_supply_text">Circulating Supply</string>
     <string name="total_supply_text">Total Supply</string>
+
+    <!-- transitions -->
+    <string name="transition_currency_market_cap">transition:CurrencyMarketCap</string>
+    <string name="transition_name_circle">transition:CIRCLE</string>
+    <string name="transition_name_phone">transition:PHONE</string>
 </resources>

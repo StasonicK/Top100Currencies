@@ -1,4 +1,4 @@
-package com.eburg_soft.top100currencies.ui.activities
+package com.eburg_soft.top100currencies.ui.activity
 
 import android.content.Intent
 import android.net.Uri

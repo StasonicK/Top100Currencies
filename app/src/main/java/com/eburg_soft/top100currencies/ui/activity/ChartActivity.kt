@@ -1,4 +1,4 @@
-package com.eburg_soft.top100currencies.ui.activities
+package com.eburg_soft.top100currencies.ui.activity
 
 import android.os.Bundle
 import android.view.View
@@ -6,7 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.eburg_soft.top100currencies.R
-import com.eburg_soft.top100currencies.chart.LatestChart
+import com.eburg_soft.top100currencies.data.chart.LatestChart
 import com.eburg_soft.top100currencies.common.App
 import com.eburg_soft.topcrypts.mvp.contract.LatestChartContract
 import com.eburg_soft.topcrypts.mvp.presenter.LatestChartPresenter

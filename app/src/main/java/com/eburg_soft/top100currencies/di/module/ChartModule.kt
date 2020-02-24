@@ -1,6 +1,6 @@
 package com.eburg_soft.top100currencies.di.module
 
-import com.eburg_soft.top100currencies.chart.LatestChart
+import com.eburg_soft.top100currencies.data.chart.LatestChart
 import com.eburg_soft.top100currencies.common.extension.YearValueFormatter
 import dagger.Module
 import dagger.Provides
