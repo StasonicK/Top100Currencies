@@ -62,7 +62,7 @@ class ChartActivity : AppCompatActivity(), OnChartValueSelectedListener, LatestC
         supportActionBar?.title = name
         val df = DecimalFormat("#")
         df.maximumFractionDigits = 2
-        
+
         text_detail_market_cap_rank.text = marketCapRank.toString()
         text_market_cap_change.text = marketCapChangePercentage24h.toString()
         text_ATH.text = ath.toString()

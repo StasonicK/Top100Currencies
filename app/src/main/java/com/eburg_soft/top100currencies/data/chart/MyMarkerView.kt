@@ -23,7 +23,7 @@ class MyMarkerView(context: Context, layoutResource: Int) : MarkerView(
     }
 
     // runs every time the MarkerView is redrawn, can be used to update the
-// content (user-interface)
+    // content (user-interface)
     override fun refreshContent(e: Entry, highlight: Highlight) {
         textContent.text = e.y.toString() + "\n" + e.x.dateToString("MMM dd, yyyy")
         super.refreshContent(e, highlight)

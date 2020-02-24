@@ -14,10 +14,13 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import javax.inject.Inject
 
 class LatestChart {
+
     @Inject
     lateinit var context: Context
+
     @Inject
     lateinit var formatter: YearValueFormatter
+
     lateinit var chart: LineChart
 
     init {
@@ -26,27 +29,27 @@ class LatestChart {
 
     fun initChart(chart: LineChart) {
         this.chart = chart
-// enable description text
+        // enable description text
         chart.description.isEnabled = false
-// enable touch gestures
+        // enable touch gestures
         chart.setTouchEnabled(true)
-// enable scaling and dragging
+        // enable scaling and dragging
         chart.isDragEnabled = true
         chart.setScaleEnabled(false)
         chart.isScaleXEnabled = true
         chart.setDrawGridBackground(false)
         chart.isDoubleTapToZoomEnabled = false
-// if disabled, scaling can be done on x- and y-axis separately
+        // if disabled, scaling can be done on x- and y-axis separately
         chart.setPinchZoom(false)
-//Sets the maximum distance in screen dp a touch can be away from an entry to cause it to get highlighted
+        //Sets the maximum distance in screen dp a touch can be away from an entry to cause it to get highlighted
         chart.maxHighlightDistance = 300F
         val data = LineData()
         data.setValueTextColor(Color.BLACK)
-// add empty data
+        // add empty data
         chart.data = data
         // get the legend (only possible after setting data)
         chart.legend.isEnabled = true
-//add marker
+        //add marker
         chart.setDrawMarkers(true)
         chart.marker =
             MyMarkerView(context, R.layout.custom_marker_view)
@@ -66,7 +69,7 @@ class LatestChart {
         rightAxis.isEnabled = true
     }
 
-    //добавление данных на график
+    //add data to a chart
     fun addEntry(value: Float, date: Float) {
         val data = chart.data
         if (data != null) {
@@ -83,7 +86,7 @@ class LatestChart {
         }
     }
 
-    //создание и настройка набора данных
+    //create and adjust data set
     private fun createSet(): LineDataSet {
         val set = LineDataSet(null, "Price, USD")
         set.mode = LineDataSet.Mode.CUBIC_BEZIER
