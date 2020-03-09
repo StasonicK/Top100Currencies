@@ -1,6 +1,6 @@
 package com.eburg_soft.topcrypts.mvp.contract
 
-import com.eburg_soft.top100currencies.mvp.contract.BaseContract
+import com.eburg_soft.top100currencies.base.BaseContract
 
 class LatestChartContract {
     interface View : BaseContract.View {

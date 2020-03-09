@@ -1,10 +1,11 @@
-package com.eburg_soft.top100currencies.ui.adapter
+package com.eburg_soft.top100currencies.base
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.eburg_soft.top100currencies.base.BaseAdapter.BaseViewHolder
 
 //abstract base class of adapter
-abstract class BaseAdapter<VH : BaseAdapter.BaseViewHolder> : RecyclerView.Adapter<VH>() {
+abstract class BaseAdapter<VH : BaseViewHolder> : RecyclerView.Adapter<VH>() {
 
     //list of elements
     var items: ArrayList<Any> = ArrayList()

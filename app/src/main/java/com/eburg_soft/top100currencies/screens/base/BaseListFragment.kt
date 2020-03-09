@@ -1,11 +1,10 @@
-package com.eburg_soft.top100currencies.ui.fragment
+package com.eburg_soft.top100currencies.base
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.eburg_soft.top100currencies.ui.adapter.BaseAdapter
 import kotlinx.android.synthetic.main.fragment_currencies_list.list
 
 abstract class BaseListFragment : Fragment() {

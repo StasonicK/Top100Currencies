@@ -1,4 +1,4 @@
-package com.eburg_soft.top100currencies.mvp.contract
+package com.eburg_soft.top100currencies.base
 
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
