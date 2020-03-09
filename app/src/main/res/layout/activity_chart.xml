@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/frame_chart_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/progress_chart"
+        app:layout_constraintStart_toStartOf="@+id/progress_chart"
+        app:layout_constraintTop_toTopOf="@+id/progress_chart">
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/chart_currency"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </FrameLayout>
+
+    <ProgressBar
+        android:id="@+id/progress_chart"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_total_supply"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:background="@android:color/transparent" />
+
+    <ImageView
+        android:id="@+id/image_currency_detail_icon"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/bitcoin" />
+
+    <TextView
+        android:id="@+id/text_market_cap_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/market_cap_rank_text"
+        app:layout_constraintStart_toEndOf="@+id/image_currency_detail_icon"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_market_cap_change_text"
+        android:layout_width="wrap_content"
+        android:layout_height="19dp"
+        android:layout_marginTop="2dp"
+        android:text="@string/mc_hange_in_24h_text"
+        app:layout_constraintStart_toStartOf="@+id/text_market_cap_text"
+        app:layout_constraintTop_toBottomOf="@+id/text_market_cap_text" />
+
+    <TextView
+        android:id="@+id/text_ath"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="@string/all_time_high_ath_text"
+        app:layout_constraintStart_toStartOf="@+id/text_market_cap_text"
+        app:layout_constraintTop_toBottomOf="@+id/text_market_cap_change_text" />
+
+    <TextView
+        android:id="@+id/text_ath_change_percentage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="@string/ath_change_text"
+        app:layout_constraintStart_toStartOf="@+id/text_market_cap_text"
+        app:layout_constraintTop_toBottomOf="@+id/text_ath" />
+
+    <TextView
+        android:id="@+id/text_circulating_supply_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="@string/circulating_supply_text"
+        app:layout_constraintStart_toStartOf="@+id/text_market_cap_text"
+        app:layout_constraintTop_toBottomOf="@+id/text_ath_change_percentage" />
+
+    <TextView
+        android:id="@+id/text_total_supply_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="@string/total_supply_text"
+        app:layout_constraintStart_toStartOf="@+id/text_market_cap_text"
+        app:layout_constraintTop_toBottomOf="@+id/text_circulating_supply_text" />
+
+    <TextView
+        android:id="@+id/text_detail_market_cap_rank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_market_cap_change"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_detail_market_cap_rank" />
+
+    <TextView
+        android:id="@+id/text_ATH"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_market_cap_change" />
+
+    <TextView
+        android:id="@+id/text_ath_change"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_ATH" />
+
+    <TextView
+        android:id="@+id/text_circulating_supply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_ath_change" />
+
+    <TextView
+        android:id="@+id/text_total_supply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_circulating_supply" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
