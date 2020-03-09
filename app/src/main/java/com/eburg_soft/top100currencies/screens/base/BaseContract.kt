@@ -1,4 +1,4 @@
-package com.eburg_soft.top100currencies.base
+package com.eburg_soft.top100currencies.screens.base
 
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable

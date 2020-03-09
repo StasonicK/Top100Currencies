@@ -5,27 +5,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/chart_currency"
+    <FrameLayout
+        android:id="@+id/frame_chart_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_total_supply" />
+        app:layout_constraintBottom_toBottomOf="@+id/progress_chart"
+        app:layout_constraintStart_toStartOf="@+id/progress_chart"
+        app:layout_constraintTop_toTopOf="@+id/progress_chart">
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/chart_currency"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </FrameLayout>
 
     <ProgressBar
         android:id="@+id/progress_chart"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:padding="100dp"
-        app:layout_constraintBottom_toBottomOf="@+id/chart_currency"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_total_supply"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         tools:background="@android:color/transparent" />
 
     <ImageView

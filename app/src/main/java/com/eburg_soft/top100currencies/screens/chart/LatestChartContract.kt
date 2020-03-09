@@ -1,6 +1,7 @@
 package com.eburg_soft.topcrypts.mvp.contract
 
-import com.eburg_soft.top100currencies.base.BaseContract
+import android.widget.FrameLayout
+import com.eburg_soft.top100currencies.screens.base.BaseContract
 
 class LatestChartContract {
     interface View : BaseContract.View {
@@ -10,6 +11,7 @@ class LatestChartContract {
         fun hideProgress()
         fun showErrorMessage(error: String?)
         fun refresh()
+//        fun postInvalidateFrameLayout()
     }
 
     abstract class Presenter: BaseContract.Presenter<View>() {

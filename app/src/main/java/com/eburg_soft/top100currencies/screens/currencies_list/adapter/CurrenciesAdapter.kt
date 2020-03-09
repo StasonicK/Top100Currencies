@@ -1,4 +1,4 @@
-package com.eburg_soft.top100currencies.ui.adapter
+package com.eburg_soft.top100currencies.screens.currencies_list.adapter
 
 import android.content.Intent
 import android.os.Parcel
@@ -7,17 +7,18 @@ import android.os.Parcelable.Creator
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.eburg_soft.top100currencies.R
-import com.eburg_soft.top100currencies.ui.activity.ChartActivity
+import com.eburg_soft.top100currencies.screens.base.BaseAdapter
+import com.eburg_soft.top100currencies.screens.chart.ChartActivity
+import com.eburg_soft.top100currencies.screens.currencies_list.adapter.CurrenciesAdapter.CurrencyViewHolder
 import kotlinx.android.synthetic.main.recycler_view_item.view.image_currency_icon
 import kotlinx.android.synthetic.main.recycler_view_item.view.text_currency_market_cap
 import kotlinx.android.synthetic.main.recycler_view_item.view.text_currency_name
 import kotlinx.android.synthetic.main.recycler_view_item.view.text_currency_price
 import kotlinx.android.synthetic.main.recycler_view_item.view.text_currency_sym
 
-class CurrenciesAdapter : BaseAdapter<CurrenciesAdapter.CurrencyViewHolder>() {
+class CurrenciesAdapter : BaseAdapter<CurrencyViewHolder>() {
 
     private lateinit var currenciesList: ArrayList<CurrenciesAdapter.Currency>
 

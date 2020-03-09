@@ -1,10 +1,9 @@
-package com.eburg_soft.top100currencies.ui.adapter
+package com.eburg_soft.top100currencies.screens.currencies_list.adapter
 
 import android.os.Parcel
 import android.os.Parcelable
 import android.os.Parcelable.Creator
 import android.view.View
-import android.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 
 class CurrenciesAdapter1

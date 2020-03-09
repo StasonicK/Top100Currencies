@@ -7,6 +7,6 @@
     android:clipToPadding="false"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragment.CurrenciesListFragment">
+    tools:context=".screens.currencies_list.CurrenciesListFragment">
 
 </androidx.recyclerview.widget.RecyclerView>

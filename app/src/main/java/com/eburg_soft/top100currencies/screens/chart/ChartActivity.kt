@@ -1,19 +1,21 @@
-package com.eburg_soft.top100currencies.ui.activity
+package com.eburg_soft.top100currencies.screens.chart
 
 import android.os.Bundle
 import android.view.View
+import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.eburg_soft.top100currencies.R
-import com.eburg_soft.top100currencies.data.chart.LatestChart
 import com.eburg_soft.top100currencies.common.App
+import com.eburg_soft.top100currencies.data.chart.LatestChart
 import com.eburg_soft.topcrypts.mvp.contract.LatestChartContract
 import com.eburg_soft.topcrypts.mvp.presenter.LatestChartPresenter
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.highlight.Highlight
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener
 import kotlinx.android.synthetic.main.activity_chart.chart_currency
+import kotlinx.android.synthetic.main.activity_chart.frame_chart_container
 import kotlinx.android.synthetic.main.activity_chart.image_currency_detail_icon
 import kotlinx.android.synthetic.main.activity_chart.progress_chart
 import kotlinx.android.synthetic.main.activity_chart.text_ATH
@@ -29,6 +31,8 @@ class ChartActivity : AppCompatActivity(), OnChartValueSelectedListener, LatestC
 
     @Inject
     lateinit var latestChart: LatestChart
+    //    var latestChart: LatestChart? = null
+    lateinit var frameLayout: FrameLayout
 
     @Inject
     lateinit var presenter: LatestChartPresenter
@@ -39,6 +43,8 @@ class ChartActivity : AppCompatActivity(), OnChartValueSelectedListener, LatestC
 
         App.appComponent.inject(this)
         presenter.attach(this)
+
+        frameLayout = findViewById(R.id.frame_chart_container)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
@@ -69,8 +75,11 @@ class ChartActivity : AppCompatActivity(), OnChartValueSelectedListener, LatestC
         text_ath_change.text = df.format(athChangePercentage)
         text_circulating_supply.text = df.format(circulatingSupply)
         text_total_supply.text = totalSupply.toString()
+
         presenter.makeChart(intent.getStringExtra("id"))
-        latestChart.initChart(chart_currency)
+//        frame_chart_container.postInvalidate()
+
+        latestChart?.initChart(chart_currency)
     }
 
     override fun onNothingSelected() {
@@ -86,7 +95,7 @@ class ChartActivity : AppCompatActivity(), OnChartValueSelectedListener, LatestC
     }
 
     override fun addEntryToChart(date: Float, value: Float) {
-        latestChart.addEntry(value, date)
+        latestChart?.addEntry(value, date)
     }
 
     override fun showProgress() {
@@ -105,6 +114,10 @@ class ChartActivity : AppCompatActivity(), OnChartValueSelectedListener, LatestC
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
+//    override fun postInvalidateFrameLayout() {
+//        frameLayout.invalidate()
+//    }
+
     override fun onResume() {
         super.onResume()
         presenter.attach(this)
@@ -114,4 +127,5 @@ class ChartActivity : AppCompatActivity(), OnChartValueSelectedListener, LatestC
         super.onPause()
         presenter.detach()
     }
+
 }

@@ -26,5 +26,6 @@ class App : Application() {
             .mvpModule(MvpModule())
             .chartModule(ChartModule())
             .build()
+//        appComponent = null
     }
 }

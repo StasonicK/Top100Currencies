@@ -1,4 +1,4 @@
-package com.eburg_soft.top100currencies.ui.fragment
+package com.eburg_soft.top100currencies.screens.currencies_list
 
 import android.os.Bundle
 import android.os.Parcelable
@@ -8,10 +8,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.eburg_soft.top100currencies.R
 import com.eburg_soft.top100currencies.common.App
-import com.eburg_soft.top100currencies.mvp.contract.CurrenciesContract
-import com.eburg_soft.top100currencies.mvp.presenter.CurrenciesPresenter
-import com.eburg_soft.top100currencies.ui.adapter.BaseAdapter
-import com.eburg_soft.top100currencies.ui.adapter.CurrenciesAdapter
+import com.eburg_soft.top100currencies.screens.base.BaseAdapter
+import com.eburg_soft.top100currencies.screens.currencies_list.adapter.CurrenciesAdapter
+import com.eburg_soft.top100currencies.screens.base.BaseListFragment
 import kotlinx.android.synthetic.main.activity_main.progress_bar
 import java.util.ArrayList
 import javax.inject.Inject

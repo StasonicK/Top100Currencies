@@ -1,4 +1,4 @@
-package com.eburg_soft.top100currencies.base
+package com.eburg_soft.top100currencies.screens.base
 
 import android.os.Bundle
 import android.view.View

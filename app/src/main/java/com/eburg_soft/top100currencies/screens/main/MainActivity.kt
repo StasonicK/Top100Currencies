@@ -1,15 +1,15 @@
-package com.eburg_soft.top100currencies.ui.activity
+package com.eburg_soft.top100currencies.screens.main
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.eburg_soft.top100currencies.R
+import com.eburg_soft.top100currencies.screens.about.AboutActivity
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.InterstitialAd
-import com.eburg_soft.top100currencies.ui.fragment.CurrenciesListFragment
+import com.eburg_soft.top100currencies.screens.currencies_list.CurrenciesListFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,7 +26,8 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             supportFragmentManager
                 .beginTransaction()
-                .add(R.id.container, CurrenciesListFragment(), null)
+                .add(R.id.container,
+                    CurrenciesListFragment(), null)
                 .commit()
         }
 

@@ -1,6 +1,6 @@
 package com.eburg_soft.top100currencies.di.module
 
-import com.eburg_soft.top100currencies.mvp.presenter.CurrenciesPresenter
+import com.eburg_soft.top100currencies.screens.currencies_list.CurrenciesPresenter
 import com.eburg_soft.topcrypts.mvp.presenter.LatestChartPresenter
 import dagger.Module
 import dagger.Provides
@@ -11,7 +11,8 @@ class MvpModule {
 
     @Provides
     @Singleton
-    fun provideCurrenciesPresenter(): CurrenciesPresenter = CurrenciesPresenter()
+    fun provideCurrenciesPresenter(): CurrenciesPresenter =
+        CurrenciesPresenter()
 
     @Provides
     @Singleton

@@ -1,9 +1,8 @@
-package com.eburg_soft.top100currencies.mvp.presenter
+package com.eburg_soft.top100currencies.screens.currencies_list
 
 
-import com.eburg_soft.top100currencies.ui.adapter.CurrenciesAdapter
+import com.eburg_soft.top100currencies.screens.currencies_list.adapter.CurrenciesAdapter
 import com.eburg_soft.top100currencies.common.App
-import com.eburg_soft.top100currencies.mvp.contract.CurrenciesContract
 import com.eburg_soft.top100currencies.network.CoinGeckoApi
 import info.eburg_soft.top100currencies.formatThousands
 import io.reactivex.Observable
@@ -26,20 +25,10 @@ class CurrenciesPresenter : CurrenciesContract.Presenter() {
     //создаем список, загружая данные с помощью RxJava
     override fun makeList() {
         view.showProgress()
-
-        //подписываемся на поток данных
         subscribe(geckoApi.getCoinMarket()
-
-            //определяем отдельный поток для отправки данных
             .subscribeOn(Schedulers.io())
-
-            //преобразуем List<GeckoCoin> в Observable<GeckoCoin>
             .flatMap { Observable.fromIterable(it) }
-
-            //получаем данные в основном потоке
             .observeOn(AndroidSchedulers.mainThread())
-
-            //наполняем поля элемента списка для адаптера
             .doOnNext {
                 view.addCurrency(
                     CurrenciesAdapter.Currency(
@@ -60,13 +49,9 @@ class CurrenciesPresenter : CurrenciesContract.Presenter() {
                     )
                 )
             }
-
-            //вызывается при вызове onComplete
             .doOnComplete {
                 view.hideProgress()
             }
-
-            //подписывает Observer на Observable
             .subscribe({
                 view.hideProgress()
                 view.notifyAdapter()

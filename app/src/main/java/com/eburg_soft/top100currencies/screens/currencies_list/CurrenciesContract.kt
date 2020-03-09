@@ -1,6 +1,7 @@
-package com.eburg_soft.top100currencies.mvp.contract
+package com.eburg_soft.top100currencies.screens.currencies_list
 
-import com.eburg_soft.top100currencies.ui.adapter.CurrenciesAdapter
+import com.eburg_soft.top100currencies.screens.base.BaseContract
+import com.eburg_soft.top100currencies.screens.currencies_list.adapter.CurrenciesAdapter
 
 class CurrenciesContract {
     interface View : BaseContract.View {
