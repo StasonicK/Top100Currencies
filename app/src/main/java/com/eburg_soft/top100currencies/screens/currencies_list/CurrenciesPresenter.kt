@@ -1,9 +1,8 @@
 package com.eburg_soft.top100currencies.screens.currencies_list
 
-
-import com.eburg_soft.top100currencies.screens.currencies_list.adapter.CurrenciesAdapter
 import com.eburg_soft.top100currencies.common.App
 import com.eburg_soft.top100currencies.network.CoinGeckoApi
+import com.eburg_soft.top100currencies.screens.currencies_list.adapter.CurrenciesAdapter
 import info.eburg_soft.top100currencies.formatThousands
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -12,21 +11,18 @@ import javax.inject.Inject
 
 class CurrenciesPresenter : CurrenciesContract.Presenter() {
 
-    //внедряем источник данных
     @Inject
     lateinit var geckoApi: CoinGeckoApi
 
-    //инициализируем компоненты Даггера
     init {
         App.appComponent.inject(this)
-
     }
 
-    //создаем список, загружая данные с помощью RxJava
-    override fun makeList() {
+        override fun makeList() {
         view.showProgress()
         subscribe(geckoApi.getCoinMarket()
             .subscribeOn(Schedulers.io())
+            .observeOn(Schedulers.computation())
             .flatMap { Observable.fromIterable(it) }
             .observeOn(AndroidSchedulers.mainThread())
             .doOnNext {
@@ -63,7 +59,7 @@ class CurrenciesPresenter : CurrenciesContract.Presenter() {
         )
     }
 
-    //обновляем список
+
     override fun refreshList() {
         view.refresh()
         makeList()

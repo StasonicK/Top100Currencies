@@ -18,9 +18,9 @@ class LatestChartPresenter : LatestChartContract.Presenter() {
     }
 
     override fun makeChart(id: String) {
-
         subscribe(geckoApi.getCoinMarketChart(id)
             .subscribeOn(Schedulers.io())
+            .observeOn(Schedulers.computation())
             .map { it.prices }
             .flatMap { Observable.fromIterable(it) }
             .observeOn(AndroidSchedulers.mainThread())
@@ -34,9 +34,6 @@ class LatestChartPresenter : LatestChartContract.Presenter() {
             }, {
                 view.hideProgress()
                 view.showErrorMessage(it.message)
-
-//                view.hideProgress()
-
                 it.printStackTrace()
             })
         )
