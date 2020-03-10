@@ -31,7 +31,7 @@ class ChartActivity : AppCompatActivity(), OnChartValueSelectedListener, LatestC
 
     @Inject
     lateinit var latestChart: LatestChart
-    //    var latestChart: LatestChart? = null
+
     lateinit var frameLayout: FrameLayout
 
     @Inject
@@ -77,9 +77,11 @@ class ChartActivity : AppCompatActivity(), OnChartValueSelectedListener, LatestC
         text_total_supply.text = totalSupply.toString()
 
         presenter.makeChart(intent.getStringExtra("id"))
-//        frame_chart_container.postInvalidate()
 
-        latestChart?.initChart(chart_currency)
+        latestChart.initChart(chart_currency)
+
+        frame_chart_container.invalidate()
+        frame_chart_container.postInvalidate()
     }
 
     override fun onNothingSelected() {
@@ -95,7 +97,7 @@ class ChartActivity : AppCompatActivity(), OnChartValueSelectedListener, LatestC
     }
 
     override fun addEntryToChart(date: Float, value: Float) {
-        latestChart?.addEntry(value, date)
+        latestChart.addEntry(value, date)
     }
 
     override fun showProgress() {
@@ -114,10 +116,6 @@ class ChartActivity : AppCompatActivity(), OnChartValueSelectedListener, LatestC
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-//    override fun postInvalidateFrameLayout() {
-//        frameLayout.invalidate()
-//    }
-
     override fun onResume() {
         super.onResume()
         presenter.attach(this)
@@ -127,5 +125,4 @@ class ChartActivity : AppCompatActivity(), OnChartValueSelectedListener, LatestC
         super.onPause()
         presenter.detach()
     }
-
 }

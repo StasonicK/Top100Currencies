@@ -11,7 +11,6 @@ class LatestChartContract {
         fun hideProgress()
         fun showErrorMessage(error: String?)
         fun refresh()
-//        fun postInvalidateFrameLayout()
     }
 
     abstract class Presenter: BaseContract.Presenter<View>() {

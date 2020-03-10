@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Top100Currencies</string>
     <string name="the_index_is_calculated" translatable="false">The rating TOP-100 cryptocurrencies by market capitalization.\nPowered by CoinGecko API </string>
-    <string name="text_rate_this_app_button">Rate This App</string>
+    <string name="text_button_rate_this_app">Rate This App</string>
 
     <string name="market_cap_rank_text">Market Cap Rank</string>
     <string name="mc_hange_in_24h_text">MC сhange in 24h, %</string>

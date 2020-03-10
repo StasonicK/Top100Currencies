@@ -25,7 +25,6 @@ class LatestChartPresenter : LatestChartContract.Presenter() {
             .flatMap { Observable.fromIterable(it) }
             .doOnComplete {
                 view.hideProgress()
-//                view.postInvalidateFrameLayout()
             }
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
