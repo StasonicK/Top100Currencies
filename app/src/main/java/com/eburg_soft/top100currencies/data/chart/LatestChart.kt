@@ -67,9 +67,6 @@ class LatestChart {
         leftAxis.setDrawGridLines(true)
         val rightAxis = chart.axisRight
         rightAxis.isEnabled = true
-
-//        chart.invalidate()
-//        chart.postInvalidate()
     }
 
     //add data to a chart
@@ -87,10 +84,6 @@ class LatestChart {
             chart.moveViewToX(date)
             chart.highlightValue(date, 0)
         }
-
-//        chart.invalidate()
-//        chart.postInvalidate()
-
     }
 
     //create and adjust data set

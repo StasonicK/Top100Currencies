@@ -23,10 +23,10 @@ class LatestChartPresenter : LatestChartContract.Presenter() {
             .subscribeOn(Schedulers.io())
             .map { it.prices }
             .flatMap { Observable.fromIterable(it) }
+            .observeOn(AndroidSchedulers.mainThread())
             .doOnComplete {
                 view.hideProgress()
             }
-            .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 view.hideProgress()
                 view.addEntryToChart(it[0], it[1])
@@ -34,6 +34,9 @@ class LatestChartPresenter : LatestChartContract.Presenter() {
             }, {
                 view.hideProgress()
                 view.showErrorMessage(it.message)
+
+//                view.hideProgress()
+
                 it.printStackTrace()
             })
         )

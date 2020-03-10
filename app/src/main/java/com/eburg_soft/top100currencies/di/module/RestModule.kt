@@ -11,6 +11,7 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import java.util.concurrent.TimeUnit.SECONDS
 import javax.inject.Named
 import javax.inject.Singleton
 
@@ -29,9 +30,9 @@ class RestModule {
     fun provideOkHttpClient(): OkHttpClient =
         OkHttpClient.Builder()
             .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-            .connectTimeout(60, TimeUnit.SECONDS)
+            .connectTimeout(60, SECONDS)
+            .readTimeout(60, SECONDS)
             .build()
-
 
     @Provides
     @Singleton
@@ -43,7 +44,6 @@ class RestModule {
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(okHttpClient)
             .build()
-
 
     @Provides
     @Singleton

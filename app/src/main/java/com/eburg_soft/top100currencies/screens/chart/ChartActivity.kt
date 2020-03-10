@@ -15,7 +15,6 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.highlight.Highlight
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener
 import kotlinx.android.synthetic.main.activity_chart.chart_currency
-import kotlinx.android.synthetic.main.activity_chart.frame_chart_container
 import kotlinx.android.synthetic.main.activity_chart.image_currency_detail_icon
 import kotlinx.android.synthetic.main.activity_chart.progress_chart
 import kotlinx.android.synthetic.main.activity_chart.text_ATH
@@ -32,8 +31,6 @@ class ChartActivity : AppCompatActivity(), OnChartValueSelectedListener, LatestC
     @Inject
     lateinit var latestChart: LatestChart
 
-    lateinit var frameLayout: FrameLayout
-
     @Inject
     lateinit var presenter: LatestChartPresenter
 
@@ -43,8 +40,6 @@ class ChartActivity : AppCompatActivity(), OnChartValueSelectedListener, LatestC
 
         App.appComponent.inject(this)
         presenter.attach(this)
-
-        frameLayout = findViewById(R.id.frame_chart_container)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
@@ -79,9 +74,6 @@ class ChartActivity : AppCompatActivity(), OnChartValueSelectedListener, LatestC
         presenter.makeChart(intent.getStringExtra("id"))
 
         latestChart.initChart(chart_currency)
-
-        frame_chart_container.invalidate()
-        frame_chart_container.postInvalidate()
     }
 
     override fun onNothingSelected() {
